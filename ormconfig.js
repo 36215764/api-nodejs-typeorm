@@ -5,8 +5,8 @@ module.exports = {
   ssl: true,
   extra: { ssl: { rejectUnauthorized: false } },
   logging: false,
-  entities: ['src/models/**/*.ts'],
-  migrations: ['src/migrations/**/*.ts'],
+  entities: ['dist/models/**/*.js'],
+  migrations: ['dist/migrations/**/*.js'],
   cli: {
     migrationsDir: 'src/migrations/',
     entitiesDir: 'src/models',
