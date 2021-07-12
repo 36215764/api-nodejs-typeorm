@@ -2,20 +2,27 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinColumn,
+  OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import Lesson from './Lesson';
 
-@Entity('class')
-export default class Class {
+@Entity('content')
+export default class Content {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column({ length: 100, unique: true })
-  name: string;
+  @OneToOne(type => Lesson, content => Content)
+  @JoinColumn()
+  lesson: Lesson;
 
-  @Column({ type: 'integer' })
-  duration: number;
+  @Column()
+  description: string;
+
+  @Column()
+  linkContent: string;
 
   @CreateDateColumn({ name: 'created_At' })
   createdAt: Date;

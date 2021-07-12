@@ -21,6 +21,7 @@
     "typescript": "^4.3.5"
   },
   "dependencies": {
+    "class-validator": "^0.13.1",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "pg": "^8.6.0",
@@ -32,6 +33,9 @@
     "build": "tsc",
     "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules src/server.ts",
     "typeorm": "node --require ts-node/register ./node_modules/typeorm/cli.js",
-    "start": "node dist/server.js"
+    "start": "node dist/server.js",
+    "predev": "yarn typeorm migration:run",
+    "postdev": "echo 'executou postdev'",
+    "prestart": "npx typeorm migration:run"
   }
 }
