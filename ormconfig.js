@@ -5,8 +5,8 @@ module.exports = {
   cache: {
     duration: 20000,
   },
-  ssl: process.env.SSL,
-  extra: process.env.EXTRA,
+  ssl: true,
+  extra: { ssl: { rejectUnauthorized: false } },
   logging: false,
   entities: ['dist/models/**/*.js'],
   migrations: ['dist/migrations/**/*.js'],
