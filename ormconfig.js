@@ -5,8 +5,8 @@ module.exports = {
   cache: {
     duration: 20000,
   },
-  ssl: process.env.SSL_SUPORT,
-  extra: { ssl: process.env.SSL_PG },
+  ssl: true,
+  extra: { ssl: { rejectUnauthorized: false } },
   logging: false,
   entities: [process.env.ENTITIES],
   migrations: [process.env.MIGRATIONS],
