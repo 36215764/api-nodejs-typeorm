@@ -2,8 +2,11 @@ module.exports = {
   type: 'postgres',
   url: process.env.DATABASE_URL,
   synchronize: false,
-  ssl: true,
-  extra: { ssl: { rejectUnauthorized: false } },
+  cache: {
+    duration: 20000,
+  },
+  ssl: process.env.SSL,
+  extra: process.env.EXTRA,
   logging: false,
   entities: ['dist/models/**/*.js'],
   migrations: ['dist/migrations/**/*.js'],
@@ -12,3 +15,10 @@ module.exports = {
     entitiesDir: 'src/models',
   },
 };
+// cache: {
+//   type: "redis",
+//   options: {
+//     host: "localhost",
+//     port: 6379
+//   }
+// },

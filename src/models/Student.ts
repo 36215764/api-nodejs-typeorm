@@ -8,19 +8,21 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { EncryptionTransformer } from 'typeorm-encrypted';
 import Discipline from './Discipline';
+import { MyCripto } from '../helpers/crypto';
 
 @Entity('student')
 export default class Student {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column()
+  @Column({ transformer: MyCripto })
   @MaxLength(50, { message: 'Tamanho maximo exedito' })
   @MinLength(2)
   name: string;
 
-  @Column()
+  @Column({ transformer: MyCripto })
   @IsEmail()
   email: string;
 
