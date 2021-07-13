@@ -5,11 +5,11 @@ module.exports = {
   cache: {
     duration: 20000,
   },
-  ssl: true,
-  extra: { ssl: { rejectUnauthorized: false } },
+  ssl: process.env.SSL_SUPORT,
+  extra: { ssl: process.env.SSL_PG },
   logging: false,
-  entities: ['dist/models/**/*.js'],
-  migrations: ['dist/migrations/**/*.js'],
+  entities: [process.env.ENTITIES],
+  migrations: [process.env.MIGRATIONS],
   cli: {
     migrationsDir: 'src/migrations/',
     entitiesDir: 'src/models',
